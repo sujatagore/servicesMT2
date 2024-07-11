@@ -1,0 +1,56 @@
+
+<mat-card class="mb-5">
+    <mat-card-content>
+        <form #productForm="ngForm" (ngSubmit)="onProductAdd()">
+            <div class="form-group">
+                <label for="productname">Product Name :-</label>
+                <input type="text"
+                        class="form-control"
+                        name="productname"
+                        ngModel
+                        #productname="ngModel"
+                        placeholder="product Name"
+                        required>
+                
+                <span class="text-danger"
+                    *ngIf="productname.invalid && productname.touched && productname.hasError('required')">
+                    Product Name is Required!!
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="productimage">Product Image :-</label>
+                <input type="text"
+                        class="form-control"
+                        name="image"
+                        ngModel
+                        #image="ngModel"
+                        placeholder="Product Image"
+                        required>
+
+                <span class="text-danger"
+                    *ngIf="image.invalid && image.touched && image.hasError('required')">
+                    Product Name is Required!!
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="productdetail">Product Details :-</label>
+                <textarea class="form-control"
+                    name="productdetail"
+                    ngModel
+                    #productdetail="ngModel"
+                    placeholder="Product Details"
+                    required>
+                </textarea>
+
+                <span class="text-danger"
+                    *ngIf="productdetail.invalid && productdetail.touched && productdetail.hasError('required')">
+                    Product Name is Required!!
+                </span>
+            </div>
+
+            <button type="submit" mat-raised-button color="primary" class="btn-block" [disabled]="productForm.invalid">Add Product</button>
+        </form>
+    </mat-card-content>
+</mat-card>

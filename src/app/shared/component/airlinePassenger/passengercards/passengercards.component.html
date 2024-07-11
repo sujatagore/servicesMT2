@@ -1,0 +1,33 @@
+
+<mat-card class="mb-4">
+    <mat-card-content>
+        <div class="form-group d-flex mb-0">
+            <label for="pname" class="sr-only">Passenger Name :-</label>
+            <span
+                class="circle"
+                [ngClass]="{
+                    'bg-success' : passObj.checkInDate,
+                    'bg-danger': !passObj.checkInDate
+                }"></span>
+            <input type="text"
+                    class="form-control"
+                    [disabled]="!IsinEditMode"
+                    [value]="passObj.fullname"
+                    #fullname>
+        </div>
+        <p class="mb-0">
+            Check In Date : {{passObj.checkInDate ? (passObj.checkInDate | date) : 'Not Checked In Yet!!!'}}
+        </p>
+
+        <p>
+            Children : {{passObj.children?.length || 0}}
+        </p>
+
+    </mat-card-content>
+    
+    <mat-card-actions class="d-flex justify-content-between">
+        <button mat-raised-button color="accent" (click)="IsinEditMode = true" *ngIf="!IsinEditMode"><mat-icon>edit</mat-icon></button>
+        <button mat-raised-button color="accent" *ngIf="IsinEditMode" (click)="IsinEditMode = false; onUpdate(fullname)"><mat-icon>update</mat-icon></button>
+        <button mat-raised-button color="warn" (click)="onRemove()"><mat-icon>delete</mat-icon></button>   
+    </mat-card-actions>
+</mat-card>

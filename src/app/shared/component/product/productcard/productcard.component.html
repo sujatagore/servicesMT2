@@ -1,0 +1,34 @@
+<ng-container *ngIf="productObj">
+    <mat-card class="mb-4">
+        <mat-card-header>
+            <mat-card-title>
+                {{productObj.productname}}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="imgpro">
+                        <img mat-card-xl-image [src]="productObj.image" [alt]="productObj.productname" [title]="productObj.productname">
+                    </div>
+                </div>
+    
+                <div class="col-md-8 mt-3">
+                    <p>
+                        {{productObj.productdetail}}
+                    </p>
+    
+                    <p class="mb-0">
+                        Product Status is : <strong>{{productObj.productstatus}}</strong>
+                    </p>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="d-flex justify-content-between">
+            <button mat-raised-button color="accent" (click)="onStatusUpd(productStatusEnum.InProgress)">In Progress</button>
+            <button mat-raised-button color="accent" (click)="onStatusUpd(productStatusEnum.Dispatched)">Dispatched</button>
+            <button mat-raised-button color="accent" (click)="onStatusUpd(productStatusEnum.Delivered)">Delivered</button>
+        </mat-card-actions>
+    </mat-card>
+</ng-container>
